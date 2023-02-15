@@ -1,0 +1,70 @@
+.home {
+  &-heading {
+    @include respond(1300px) {
+      height: 45rem;
+    }
+    &-img {
+      @apply h-auto sm:h-full;
+    }
+
+    &-text-wrapper {
+      background-image: linear-gradient(to top, #0d0d0d, transparent);
+
+      @include respond(640px) {
+          background-image: linear-gradient(to top, #111111, transparent);
+      }
+    }
+  }
+
+  .category-wrapper {
+    &.few-items {
+      @apply justify-start;
+    }
+  }
+
+  .category-wrapper-item {
+    .book-card {
+      @apply flex flex-col items-center h-full;
+
+      > a {
+        img {
+          @apply min-w-full h-auto xl:min-w-[265px];
+        }
+      }
+
+      &-content {
+        height: calc( 100% - 265px);
+        @apply min-h-[200px] items-start gap-y-0;
+
+        > a {
+          .title {
+            @apply text-[15px];
+          }
+        }
+
+        .content {
+          -webkit-line-clamp: 4;
+          @apply text-[13px] font-[400];
+        }
+
+        .price-buy-section {
+          span {
+            @apply text-[18px];
+          }
+
+          a {
+            @apply text-[14px] text-center;
+          }
+        }
+      }
+    }
+  }
+
+  .premier-releases,
+  .category {
+    &-text {
+      @apply mt-16;
+    }
+  }
+
+}

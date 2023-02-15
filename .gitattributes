@@ -1,0 +1,6 @@
+# Don't show diffs for generated files in github
+wp-admin/** linguist-generated=true
+wp-content/plugins/** linguist-generated=true
+wp-includes/** linguist-generated=true
+wp-content/updraft/** linguist-generated=true
+wp-content/index.php linguist-generated=true

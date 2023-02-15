@@ -1,0 +1,40 @@
+.search {
+  @apply ml-0;
+
+  &-container {
+    @apply grid mt-10;
+  }
+
+  &-results-wrapper {
+    > .book-card {
+      @apply w-full min-w-[217px] max-w-[289px] flex flex-col items-center;
+
+      > a {
+        @apply overflow-visible;
+
+        img {
+          @apply w-auto min-w-[265px] h-[265px] object-cover;
+        }
+      }
+
+      &-content {
+        height: calc(100% - 265px);
+
+        .price-buy-section {
+          span,
+          a {
+            @apply text-[1.125rem] text-center;
+          }
+        }
+      }
+    }
+  }
+
+  &-filter-box {
+    label {
+      .checkbox-tick {
+        @apply left-[-1.7rem];
+      }
+    }
+  }
+}

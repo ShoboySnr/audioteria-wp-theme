@@ -1,0 +1,11 @@
+wp-content/themes/audioteria-debug/
+.idea/
+node_modules/
+.vscode/
+.env
+/wp-content/plugins/wp-dummy-content-generator/
+/wp-content/plugins/all-in-one-wp-migration/
+/wp-content/uploads
+/wp-content/uploads/wp-file-manager-pro/
+/wp-content/uploads/wpcf7_uploads/
+.DS_Store

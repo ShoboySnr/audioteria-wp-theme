@@ -1,0 +1,40 @@
+version: "3.1"
+
+services:
+  wordpress:
+    image: wordpress:5.8-php7.4-apache
+    restart: always
+    stdin_open: true
+    tty: true
+    ports:
+      - "${PORT:-5000}:80"
+    depends_on:
+      - audiodb
+    environment:
+      WORDPRESS_DB_HOST: "${WORDPRESS_DB_HOST}"
+      WORDPRESS_DB_USER: "${WORDPRESS_DB_USER}"
+      WORDPRESS_DB_PASSWORD: "${WORDPRESS_DB_PASSWORD}"
+      WORDPRESS_DB_NAME: "${WORDPRESS_DB_NAME}"
+      WORDPRESS_DEBUG: "${WORDPRESS_DEBUG}"
+      WORDPRESS_SCRIPTS_DEBUG: "${WORDPRESS_SCRIPTS_DEBUG}"
+      WORDPRESS_DEBUG_LOG: "${WORDPRESS_DEBUG_LOG}"
+      WORDPRESS_FS_METHOD: "${WORDPRESS_DB_NAME}"
+    volumes:
+      - wordpress:/var/www/html
+      - ./wp-content/themes/audioteria-wp:/var/www/html/wp-content/themes/audioteria-wp
+      - ./wp-content/plugins:/var/www/html/wp-content/plugins
+      - ./uploads.ini:/usr/local/etc/php/conf.d/uploads.ini
+  audiodb:
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_DATABASE: "${MYSQL_DATABASE}"
+      MYSQL_USER: "${MYSQL_USER}"
+      MYSQL_PASSWORD: "${MYSQL_PASSWORD}"
+      MYSQL_RANDOM_ROOT_PASSWORD: "${MYSQL_RANDOM_ROOT_PASSWORD}"
+    volumes:
+      - audiodb:/var/lib/mysql
+      - ./mysql/configs/my.cnf:/etc/mysql/my.cnf
+volumes:
+  wordpress:
+  audiodb:
